@@ -345,6 +345,8 @@ th:first-child {
 
 .header {
     padding: 25px 0px 28px;
+    display: flex;
+    flex-direction: column;
 
     &__container {
         justify-content: space-between;
@@ -575,6 +577,7 @@ th:first-child {
 
     &__list {
         justify-content: center;
+        flex-wrap: wrap;
     }
 
     &__item {
@@ -590,13 +593,15 @@ th:first-child {
 
     &__grid {
         margin: 30px -20px 0px;
+        justify-content: space-around;
     }
 
     &__col {
         overflow: hidden;
         position: relative;
         margin-bottom: 0;
-        padding: 20px 20px 38px
+        padding: 20px 20px 38px;
+        min-width: 240px;
     }
 
     &__image {
@@ -697,6 +702,13 @@ th:first-child {
         text-align: center;
     }
 
+    &__image{
+        display: block;
+        max-width: 122px;
+        height: auto;
+        margin: 0 auto;
+    }
+
     &__list {
         padding: 96px 33px 0;
         justify-content: space-between;
@@ -751,17 +763,24 @@ th:first-child {
 
 .pluses {
     margin-top: -375px;
-    padding: 485px 0 620px;
+    padding: 485px 0 600px;
     background-color: #0e51a3;
     color: #fff;
     background-image: url(../img/pluses-image.png);
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: contain;
+    z-index: 1;
 
     &__list {
         list-style: none;
         margin: 98px -20px 0px;
+        justify-content: space-around;
+    }
+
+    &__item{
+        min-width: 150px;
+        margin-bottom: 20px;
     }
 
     &__col {
@@ -891,11 +910,13 @@ th:first-child {
 
     &__grid {
         margin: 68px -20px 0px;
+        justify-content: space-around;
     }
 
     &__col {
         padding-left: 20px;
         padding-right: 20px;
+        min-width: 300px;
     }
 
     &__item {
@@ -1087,6 +1108,8 @@ th:first-child {
 
     &__col {
         padding: 0px 20px;
+        margin: 0px 0px 18px;
+        min-width: 220px;
     }
 
     &__text {
@@ -1124,13 +1147,16 @@ th:first-child {
     }
 
     &__bottom {
-        margin: 18px 0px 0px;
         align-items: center;
         justify-content: space-between;
     }
 
     &__personal {
         margin-bottom: 0;
+    }
+
+    &__btn{
+        padding: 17px 39px;
     }
 }
 
@@ -1289,7 +1315,7 @@ input .feedback__form .form__group {
 .feedback__form .terms-conditions {
     display: flex;
     justify-content: center;
-    margin: 21px 0px 0px;
+    margin: 21px 15px 0px;
 }
 
 .feedback__form .form__btn {
@@ -1420,3 +1446,66 @@ input .feedback__form .form__group {
         transform: translateY(0%);
     }
 }
+
+.hamburger {
+    position: relative;
+    z-index: 9999;
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger__line {
+    width: 30px;
+    height: 3px;
+    background-color: #0e51a3;
+    display: block;
+    margin: 5px auto;
+    transition: all .3s ease-in-out
+}
+
+.hamburger.is-active {
+    transition: all .25s cubic-bezier(.25, .46, .45, .94);
+    transition-delay: .3s;
+    transform: translateX(-50%) rotate(45deg)
+}
+
+.hamburger.is-active .hamburger__line:nth-child(2) {
+    width: 0
+}
+
+.hamburger.is-active .hamburger__line:nth-child(1),
+.hamburger.is-active .hamburger__line:nth-child(3) {
+    transition-delay: .2s
+}
+
+.hamburger.is-active .hamburger__line:nth-child(1) {
+    transform: translateY(4px)
+}
+
+.hamburger.is-active .hamburger__line:nth-child(3) {
+    transform: translateY(-12px) rotate(90deg);
+}
+
+.header__social_mobile{
+    display: none;
+}
+
+.up__circle{
+    background-image: url(../img/arrow__up.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.btn_icon-online:before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    background-image: url(../img/online.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 32px;
+    height: 32px;
+    margin-right: 20px;
+}
+
+@import "partials/media";

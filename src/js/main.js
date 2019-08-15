@@ -56,7 +56,7 @@ function changeCheckbox(checkbox, btn) {
             $(this).parents('form').find(elementBtn).addClass('btn_disabled');
         }
     });
-    
+
 }
 
 
@@ -89,11 +89,11 @@ function showLabel() {
 }
 
 function scrollToElement(classItem) {
-        $(classItem).on("click", function(t) { 
-            t.preventDefault(); 
-            var e = $($(this).attr("href"));
+    $(classItem).on("click", function(t) {
+        t.preventDefault();
+        var e = $($(this).attr("href"));
 
-            $("body,html").animate({ scrollTop: e.offset().top }, 800);
+        $("body,html").animate({ scrollTop: e.offset().top }, 800);
     });
 }
 
@@ -119,9 +119,24 @@ function inputmask() {
 
 }
 
+function sidebarToggle() {
+
+    $('.hamburger').on('click', function(e) {
+        e.preventDefault();
+
+        $('.hamburger').toggleClass("is-active");
+        $('.header__nav').toggleClass('is-visible');
+        $('.wrapper').toggleClass('open-sidebar');
+        $('html').toggleClass('overflow');
+
+    });
+}
+
 
 
 $(function() {
+
+    sidebarToggle();
 
     inputmask();
 
